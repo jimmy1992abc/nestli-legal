@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nestli — Pricing</title>
+<meta name="description" content="Nestli plans: Free, Premium, and Premium Family. Storage, AI, family sharing and more.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brand: #2a6b29;
+    --brand-soft: #A8D5A2;
+    --brand-tint: #f6faf5;
+    --text: #0a0a0a;
+    --text-2: #555;
+    --text-3: #8a8a8a;
+    --border: #ededed;
+    --row-border: #f4f4f4;
+    --shadow-lift: 0 4px 14px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.08);
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .bg-blob {
+    position: fixed;
+    top: -200px;
+    right: -220px;
+    width: 520px; height: 520px;
+    background: radial-gradient(closest-side, rgba(168,213,162,0.20), rgba(168,213,162,0));
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav.top {
+    position: relative; z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); }
+  .logo .dot { color: var(--brand-soft); }
+  .nav-links a {
+    color: var(--text-2);
+    margin-left: 28px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  main {
+    position: relative; z-index: 1;
+    flex: 1;
+    padding: 40px 40px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .page-hero {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  h1 {
+    font-size: clamp(34px, 4.6vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  h1 .accent {
+    background: linear-gradient(120deg, var(--brand) 0%, #6fae5f 55%, var(--brand-soft) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-sub {
+    font-size: 17px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+
+  /* Plan grid */
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+  .plan {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 24px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .plans .plan:nth-child(1) { animation-delay: 0.10s; }
+  .plans .plan:nth-child(2) { animation-delay: 0.20s; }
+  .plans .plan:nth-child(3) { animation-delay: 0.30s; }
+  .plan:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+    border-color: rgba(168,213,162,0.6);
+  }
+  .plan.featured {
+    border-color: rgba(168,213,162,0.75);
+    background: var(--brand-tint);
+  }
+  .plan-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .plan-name {
+    font-size: 13px; font-weight: 700;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .plan.featured .plan-name { color: var(--brand); }
+  .plan-tag {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+    color: var(--brand); background: #fff; padding: 3px 8px; border-radius: 999px;
+    border: 1px solid rgba(168,213,162,0.5);
+  }
+  .plan-price {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+  }
+  .plan-price .per { font-size: 14px; font-weight: 500; color: var(--text-3); margin-left: 2px; }
+  .plan-summary {
+    font-size: 14px; color: var(--text-2); margin-top: 10px; line-height: 1.5;
+    min-height: 44px;
+  }
+  .plan-cta {
+    margin-top: 20px;
+    display: block;
+    padding: 12px 18px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    font-size: 14px; font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+  .plan.featured .plan-cta {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+  }
+
+  /* Feature list — same order across plans for vertical scan */
+  .features {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .feature {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--row-border);
+    font-size: 14px;
+    color: var(--text);
+    align-items: start;
+  }
+  .feature:last-child { border-bottom: none; }
+  .feature .ico {
+    width: 18px; height: 18px;
+    color: var(--brand);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .feature.muted { color: var(--text-3); }
+  .feature.muted .ico { color: var(--text-3); }
+  .feature .label { line-height: 1.4; }
+  .feature .label strong { font-weight: 600; }
+
+  .plan-note {
+    font-size: 12px;
+    color: var(--text-3);
+    text-align: center;
+    margin-top: 36px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  footer {
+    position: relative; z-index: 2;
+    padding: 18px 40px 22px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-3);
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-2); font-weight: 500; }
+  footer .links a { margin-left: 18px; }
+  footer a:hover { color: var(--text); text-decoration: none; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .plans { grid-template-columns: 1fr; gap: 12px; }
+    .plan-summary { min-height: 0; }
+  }
+  @media (max-width: 740px) {
+    nav.top, main, footer { padding-left: 22px; padding-right: 22px; }
+    main { padding-top: 28px; padding-bottom: 48px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    footer .links a:first-child { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blob"></div>
+
+<nav class="top">
+  <a href="/" class="logo">nestli<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="/pricing/" class="active">Pricing</a>
+    <a href="/downloads/">Download</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <h1>Simple, <span class="accent">fair pricing</span>.</h1>
+    <p class="page-sub">Start free. Upgrade when you want a smarter AI, more storage, or to share Premium with up to 9 family members.</p>
+  </section>
+
+  <section class="plans">
+
+    <!-- FREE -->
+    <article class="plan">
+      <div class="plan-head"><span class="plan-name">Free</span></div>
+      <div class="plan-price">A$0<span class="per">/mo</span></div>
+      <p class="plan-summary">Core tracking for one family, with a partner to share the load.</p>
+      <span class="plan-cta" aria-disabled="true">Current plan</span>
+
+      <div class="features">
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="label"><strong>1 GB</strong> family photo storage</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="label">Up to <strong>4 photo uploads / day</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.7 5.1L19 9l-5.3 1.9L12 16l-1.7-5.1L5 9l5.3-1.9L12 2z"/></svg>
+          <span class="label"><strong>3 AI+ questions / day</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <span class="label">AI history — <strong>last 30 days</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="label">Invite <strong>1 partner</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A5.2 5.2 0 0 1 12 4a5.2 5.2 0 0 1 8 6.2C20 17.5 12 22 12 22z"/></svg>
+          <span class="label">Photo questions &amp; voice records</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="label">Standard backup</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="label">Baby profiles &amp; history kept forever</span>
+        </div>
+        <div class="feature muted">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="label">Family members get Premium</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PREMIUM (featured) -->
+    <article class="plan featured">
+      <div class="plan-head">
+        <span class="plan-name">Premium</span>
+        <span class="plan-tag">Most popular</span>
+      </div>
+      <div class="plan-price">A$13.99<span class="per">/mo</span></div>
+      <p class="plan-summary">Unlimited AI, bigger storage, priority backup.</p>
+      <span class="plan-cta" aria-disabled="true">Subscribe</span>
+
+      <div class="features">
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="label"><strong>500 GB</strong> family photo storage</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="label">Up to <strong>9 photo uploads / day</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.7 5.1L19 9l-5.3 1.9L12 16l-1.7-5.1L5 9l5.3-1.9L12 2z"/></svg>
+          <span class="label"><strong>Unlimited AI+</strong> consultations</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <span class="label">AI history — <strong>full history</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="label">Invite up to <strong>9 family members</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A5.2 5.2 0 0 1 12 4a5.2 5.2 0 0 1 8 6.2C20 17.5 12 22 12 22z"/></svg>
+          <span class="label"><strong>Unlimited</strong> photo &amp; voice logs</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <span class="label"><strong>Priority</strong> backup</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="label">Records kept forever · fair-use policy</span>
+        </div>
+        <div class="feature muted">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="label">Family members get Premium</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- FAMILY -->
+    <article class="plan">
+      <div class="plan-head"><span class="plan-name">Premium Family</span></div>
+      <div class="plan-price">A$69.99<span class="per">/mo</span></div>
+      <p class="plan-summary">Every Premium perk, shared with up to 9 family members.</p>
+      <span class="plan-cta" aria-disabled="true">Subscribe</span>
+
+      <div class="features">
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="label"><strong>1 TB</strong> shared photo storage</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="label"><strong>9/day per baby · 20/day pooled</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.7 5.1L19 9l-5.3 1.9L12 16l-1.7-5.1L5 9l5.3-1.9L12 2z"/></svg>
+          <span class="label"><strong>Unlimited AI+</strong> for the whole family</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <span class="label">AI history — <strong>full history</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="label">Invite <strong>9 family members to share</strong></span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A5.2 5.2 0 0 1 12 4a5.2 5.2 0 0 1 8 6.2C20 17.5 12 22 12 22z"/></svg>
+          <span class="label">Unlimited photo &amp; voice for everyone</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/><circle cx="18.5" cy="5.5" r="2.5" fill="currentColor" stroke="none"/></svg>
+          <span class="label"><strong>Priority</strong> backup &amp; support</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="label">Records kept forever · fair-use policy</span>
+        </div>
+        <div class="feature">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.7 5.1L19 9l-5.3 1.9L12 16l-1.7-5.1L5 9l5.3-1.9L12 2z"/></svg>
+          <span class="label"><strong>All family members get Premium</strong></span>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <p class="plan-note">
+    Prices shown in AUD. Subscriptions are processed by the Google Play Store (iOS coming later) and renew monthly unless cancelled before the next billing period. Cancel any time — your plan stays active until period end. See the full <a href="/terms/">Terms</a> for fair-use and refund details.
+  </p>
+</main>
+
+<footer>
+  <div>&copy; 2026 Nestli</div>
+  <div class="links">
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/delete-account.html">Delete account</a>
+  </div>
+</footer>
+
+</body>
+</html>
