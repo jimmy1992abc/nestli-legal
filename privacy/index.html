@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nestli — Privacy Policy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.6; }
+  h1 { border-bottom: 2px solid #A8D5A2; padding-bottom: 8px; }
+  h2 { margin-top: 32px; color: #2a6b29; }
+  p, li { font-size: 16px; }
+  code { background: #f2f2f2; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+  .meta { color: #666; font-size: 14px; }
+  a { color: #2a6b29; }
+</style>
+</head>
+<body>
+
+<h1>Nestli Privacy Policy</h1>
+<p class="meta">Last updated: 20 April 2026 (v3)</p>
+
+<p>
+This Privacy Policy describes how Nestli ("we", "our", or "the app"), a mobile
+application for tracking baby care activities, collects, uses, stores, and
+shares information about you when you use the app. It should be read
+alongside our in-app Terms &amp; Conditions (Settings → Terms &amp; Conditions).
+</p>
+
+<h2>1. Information We Collect</h2>
+<p>We collect the following categories of information:</p>
+<ul>
+  <li><strong>Account information</strong> — email address, username, and password (stored in hashed form) provided during sign-up. A user identifier (UUID) is generated server-side to identify your account.</li>
+  <li><strong>Baby profile data</strong> — baby name, date of birth, sex, birth measurements, and cover photo that you voluntarily enter.</li>
+  <li><strong>Care logs</strong> — feeding, diaper, sleep, growth, health, and milestone records that you create in the app.</li>
+  <li><strong>Photos</strong> — images you choose to upload from your device camera or photo library. Three sizes (original, preview, thumbnail) are generated on-device and stored in our private photo bucket.</li>
+  <li><strong>Voice recordings</strong> (optional) — when you use the voice-log feature, audio is sent to our server for transcription into a care log. Audio is processed in memory only and is not persisted by Nestli. See section 5 for the third-party transcription provider.</li>
+  <li><strong>Usage data</strong> — basic, non-identifying information about how the app is used (e.g. feature interactions) for reliability and improvement. We do not use analytics SDKs that profile users.</li>
+</ul>
+
+<h2>2. Camera, Photo Library, and Microphone Access</h2>
+<p>
+Nestli requests access to your device camera and photo library so that you
+can capture or select photos of your baby to attach to your records. Microphone
+access is requested only when you use the voice-log feature. These permissions
+are used only when you explicitly invoke the corresponding feature inside
+the app.
+</p>
+<p>
+You can deny or revoke any of these permissions at any time via your device
+settings. Denying them will disable the relevant features but will not affect
+other parts of the app.
+</p>
+
+<h2>3. How We Use Information</h2>
+<ul>
+  <li>To provide the core features of the app — storing and displaying your baby care records.</li>
+  <li>To authenticate you and keep your account secure.</li>
+  <li>To send transactional emails such as email verification, password reset, email change notifications, and family invites.</li>
+  <li>To provide the optional AI+ assistant feature, which sends a summary of recent log activity (not raw data, not photos) to a third-party AI provider to generate responses to your questions. You can attach a photo to an AI question if you choose to; that photo is sent for that single request.</li>
+  <li>To transcribe voice-log recordings into care logs via a third-party transcription provider.</li>
+  <li>To diagnose problems and improve reliability.</li>
+</ul>
+<p>We do <strong>not</strong> sell your personal information. We do <strong>not</strong> use your data for advertising.</p>
+
+<h2>4. Data Storage and Security</h2>
+<p>
+Text records (feeding, diaper, sleep, growth, etc.), account data, and
+authentication are stored on <strong>Supabase</strong>, a managed backend provider,
+using encrypted connections and row-level security so that only you and the
+family members you explicitly invite can access your baby records.
+</p>
+<p>
+Photos are stored on <strong>Amazon Web Services (AWS S3)</strong> in the Asia
+Pacific (Sydney) region, in a private bucket that is not publicly readable.
+They are served to your device through <strong>Amazon CloudFront</strong>, a
+global content delivery network, using short-lived signed URLs — this lets
+users in different regions (including mainland China, via CloudFront edge
+locations in Hong Kong, Tokyo, or Singapore) load photos quickly without
+making the bucket public.
+</p>
+<p>
+All data is encrypted in transit (HTTPS). Supabase and AWS S3 encrypt data
+at rest using their standard provider-managed keys.
+</p>
+
+<h2>5. Third-Party Service Providers</h2>
+<p>
+Nestli uses the following service providers to operate the app. Limited user
+data is shared with each only as required for the listed purpose, and none of
+them sell your data.
+</p>
+<ul>
+  <li><strong>Supabase</strong> — application database, authentication, and serverless functions.</li>
+  <li><strong>Amazon Web Services (AWS)</strong> — Amazon S3 photo storage, Asia Pacific (Sydney) region.</li>
+  <li><strong>Amazon CloudFront</strong> — global content delivery network that serves photos from edge locations closer to your device.</li>
+  <li><strong>OpenAI</strong> — processes AI+ chat requests and voice-log transcriptions. Baby context data is sent per your questions; voice audio is sent per your recordings. OpenAI states that data submitted via its API is not used to train models.</li>
+  <li><strong>Resend</strong> — sends transactional emails such as verification codes, password resets, email-change notifications, and family invites.</li>
+</ul>
+<p>
+By using the Service you agree to these sub-processors being used. The list
+may be updated as our infrastructure evolves; material additions will be
+communicated in-app.
+</p>
+
+<h2>6. Family Sharing</h2>
+<p>
+You may invite other users (for example, a partner or caregiver) to view or
+edit records for a specific baby. Invited members only gain access after
+accepting an invite code or email invitation. You can revoke their access at
+any time from the app. Revoking access removes a member's ability to view
+future data but does not erase entries they previously created.
+</p>
+
+<h2>7. Children's Privacy</h2>
+<p>
+Nestli is designed for use by adult caregivers to record information about
+their own children. The app is not directed at children under 13, and we do
+not knowingly collect personal information directly from children. The data
+stored about an infant or child within Nestli is provided by the parent or
+legal guardian on behalf of that child.
+</p>
+
+<h2>8. Your Rights</h2>
+<p>You can:</p>
+<ul>
+  <li>Access, update, or delete your records from within the app.</li>
+  <li>Delete your account, which will remove your profile and associated records from our systems.</li>
+  <li>Contact us to request a copy or deletion of your data.</li>
+</ul>
+
+<h2>9. Data Retention</h2>
+<p>
+We retain your data for as long as your account is active. When you delete
+your account, your personal information and uploaded photos are removed from
+live systems within a reasonable period. Routine backups may retain data for
+up to 30 days before being purged. Voice-log audio is not retained at all by
+Nestli — it is passed through to the transcription provider in memory and
+discarded.
+</p>
+
+<h2>10. Changes to This Policy</h2>
+<p>
+We may update this Privacy Policy from time to time. Material changes will be
+communicated through the app or by email. Continued use of Nestli after a
+change constitutes acceptance of the updated policy.
+</p>
+
+<h2>11. Contact</h2>
+<p>
+Questions about this policy or your data can be sent to:
+<br>
+<a href="mailto:privacy@nestli.clarechen.com.au">privacy@nestli.clarechen.com.au</a>
+</p>
+
+</body>
+</html>
