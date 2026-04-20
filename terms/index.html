@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nestli — Terms &amp; Conditions</title>
+<meta name="description" content="Terms and conditions governing the use of Nestli.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brand: #2a6b29;
+    --brand-soft: #A8D5A2;
+    --brand-tint: #f6faf5;
+    --text: #0a0a0a;
+    --text-2: #555;
+    --text-3: #8a8a8a;
+    --border: #ededed;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); }
+  .logo .dot { color: var(--brand-soft); }
+  .nav-links a { color: var(--text-2); margin-left: 28px; font-size: 15px; font-weight: 500; transition: color 0.15s ease; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  main {
+    flex: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+    width: 100%;
+  }
+  h1 {
+    font-size: clamp(32px, 4.2vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .meta {
+    color: var(--text-3);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 24px;
+  }
+  .intro {
+    font-size: 17px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 36px;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  p { font-size: 15.5px; color: var(--text-2); margin-bottom: 12px; line-height: 1.6; }
+  strong { color: var(--text); font-weight: 600; }
+  .footer-note {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-3);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  footer {
+    padding: 18px 40px 22px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-3);
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-2); font-weight: 500; }
+  footer .links a { margin-left: 18px; }
+  footer a:hover { color: var(--text); text-decoration: none; }
+
+  @media (max-width: 740px) {
+    nav.top, main, footer { padding-left: 22px; padding-right: 22px; }
+    main { padding-top: 24px; padding-bottom: 44px; }
+    h1 { font-size: 30px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    footer .links a:first-child { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="/" class="logo">nestli<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="/downloads/">Download</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+</nav>
+
+<main>
+
+<h1>Terms &amp; Conditions</h1>
+<p class="meta">Last updated: 20 April 2026 (v3)</p>
+
+<p class="intro">
+Welcome to Nestli. These Terms &amp; Conditions (the "Terms") govern your use of the Nestli mobile application and related services (the "Service"). By creating an account you agree to these Terms. If you do not agree, please do not use the Service.
+</p>
+
+<h2>1. Acceptance of Terms</h2>
+<p>By creating an account, signing in, or using any feature of the Service, you confirm that you have read, understood, and agree to be bound by these Terms. If you are using the Service on behalf of a minor (such as your own child), you confirm that you are the parent or legal guardian and have authority to provide the information you share.</p>
+
+<h2>2. Your Account</h2>
+<p>You are responsible for keeping your username, email, and password confidential. You agree to provide accurate information during sign-up and to keep that information up to date. You must not share your account with others or allow anyone else to access it. You are responsible for all activity that occurs under your account.</p>
+
+<h2>3. Your Data and Privacy</h2>
+<p>Nestli stores the baby care data you log (feedings, diapers, sleep, growth, photos, etc.) so you can access it across your devices and share it with family members you invite. Data is stored on managed cloud infrastructure — text logs and account data on Supabase; photo files on Amazon Web Services (AWS S3, region: Sydney, Australia) and delivered to your device via Amazon CloudFront's global edge network. See <a href="#s14">"Third-Party Service Providers"</a> below for the full list. Your data is not sold to third parties. You can delete your babies, logs, and account at any time, which will remove the associated data from our active systems within a reasonable period.</p>
+
+<h2>4. Family Sharing and Invites</h2>
+<p>When you invite another user to a baby profile, that user will be able to view and, depending on the role you assign, add or edit records for that baby. You are responsible for choosing whom you invite and for the role you grant. Revoking a member's access removes their ability to view future data but does not erase entries they previously created.</p>
+
+<h2>5. AI+ and Informational Content</h2>
+<p>Nestli may offer AI-generated suggestions, summaries, or answers based on the data you log. This content is provided for informational and educational purposes only and is <strong>NOT medical advice</strong>. Always consult a qualified pediatrician or healthcare professional for medical questions, diagnoses, or treatment decisions. Nestli and its providers are not liable for decisions made based on AI-generated content.</p>
+
+<h2>6. Acceptable Use</h2>
+<p>You agree not to misuse the Service. You will not attempt to gain unauthorized access to other users' accounts or data, upload content that is illegal or infringes anyone's rights, reverse-engineer or disrupt the Service, or use the Service to harass or harm others. We may suspend or terminate accounts that violate these rules.</p>
+
+<h2>7. Changes and Termination</h2>
+<p>We may update these Terms from time to time. Material changes will be communicated through the app. Continued use of the Service after an update constitutes acceptance of the revised Terms. You may stop using the Service and delete your account at any time. We may also suspend or terminate the Service or any account where required by law or in case of a serious policy violation.</p>
+
+<h2>8. Disclaimer and Limitation of Liability</h2>
+<p>The Service is provided "as is" without warranties of any kind. While we work to keep your data safe and the Service running, we cannot guarantee uninterrupted availability or that stored data will never be lost. To the maximum extent permitted by law, Nestli and its contributors are not liable for any indirect, incidental, or consequential damages arising from your use of the Service.</p>
+
+<h2>9. AI and Fair Use</h2>
+<p>AI features are limited to topics related to mother &amp; baby care, parenting, growth tracking, and family life. Nestli may limit AI usage that is unusual, bulk, or outside intended use. If a user repeatedly asks questions unrelated to the Service's purpose, we may suspend AI features for that account. "Unlimited" means unlimited within normal household use — it does not cover commercial use, bulk queries, or automated access.</p>
+
+<h2>10. Photos and Storage</h2>
+<p>Photo storage is a single family-shared capacity used by all members of a baby profile. Daily upload limits follow the rules currently in effect, which Nestli may adjust based on service conditions. Storage is intended for baby photos, growth records, and family-related content; it is not a long-term file backup service, and it is not for content unrelated to the Service. We may restrict uploads in cases of abnormal upload activity, bulk videos, non-family content, or other storage abuse.</p>
+
+<h2>11. Family Members and Permissions</h2>
+<p>Free accounts support an Owner plus 1 Partner. Premium and Premium Family plans can invite up to 9 additional family members. Permissions may vary by role — for example, Owner, Partner, or Grandparent. Premium benefits within a Family plan apply only to the baby profiles owned by the paying Owner; invited members' own baby profiles remain on the Free tier.</p>
+
+<h2>12. Data and History</h2>
+<p>Baby profiles and growth history are retained indefinitely by default. AI historical analysis may read a different span of logs depending on your plan (e.g. Free accounts are limited to the last 30 days). We back up data regularly, but you should still keep your own copies of anything important.</p>
+
+<h2>13. Plans and Pricing</h2>
+<p>Plan pricing may differ by region, tax, exchange rate, or app-store policy. Subscriptions renew automatically unless cancelled before the next billing period. Partial refunds for consumed periods are generally not available. Nestli may adjust plan inclusions, pricing, upload limits, or AI quotas, with notice before a material change takes effect.</p>
+
+<h2 id="s14">14. Third-Party Service Providers</h2>
+<p>Nestli uses the following service providers to operate the app. Limited user data is shared with each only as required for the listed purpose, and none of them sell your data.</p>
+<p>
+<strong>Supabase</strong> — application database, authentication, and serverless functions.<br>
+<strong>Amazon Web Services (AWS)</strong> — photo storage on Amazon S3 in the Asia Pacific (Sydney) region.<br>
+<strong>Amazon CloudFront</strong> — global content delivery network used to serve photos from edge locations closer to your device (for example, users in mainland China are served from Hong Kong / Tokyo / Singapore POPs rather than Sydney).<br>
+<strong>OpenAI</strong> — processes AI+ chat requests; baby context data is sent per your questions and is not used to train models.<br>
+<strong>Resend</strong> — sends transactional emails such as verification codes, password resets, and invites.
+</p>
+<p>By using the Service you agree to these sub-processors being used. The list may be updated as our infrastructure evolves; material additions will be communicated in-app.</p>
+
+<p class="footer-note">
+If you have questions about these Terms, please contact us at
+<a href="mailto:privacy@nestli.clarechen.com.au">privacy@nestli.clarechen.com.au</a>.
+</p>
+
+</main>
+
+<footer>
+  <div>&copy; 2026 Nestli</div>
+  <div class="links">
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/delete-account.html">Delete account</a>
+  </div>
+</footer>
+
+</body>
+</html>
