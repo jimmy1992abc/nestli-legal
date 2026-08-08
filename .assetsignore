@@ -6,3 +6,9 @@ CNAME
 .gitignore
 **/.wrangler
 **/test
+# The assets directory is the repo root, so anything that lands here gets
+# published. CI installs wrangler into the workspace, which put 122 MiB of
+# workerd over the 25 MiB per-asset limit and failed the deploy.
+**/node_modules
+.github
+README.md
