@@ -26,6 +26,9 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # The action defaults to wrangler 3.90.0, which predates `wrangler.jsonc`
+          # support and so reports "Missing entry-point" against this repo's config.
+          wranglerVersion: "4.120.0"
 
       # Deploying is not the same as being served. Assert the live host actually
       # changed, so a silent no-op fails the run instead of looking green.
