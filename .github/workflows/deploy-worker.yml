@@ -1,0 +1,49 @@
+name: Deploy cn.nestliapp.com Worker
+
+# The apex is GitHub Pages and publishes itself on every push. The CN host is a
+# Cloudflare Worker that only moved when someone ran `wrangler deploy` by hand,
+# so it silently served 2026-07-27 content for twelve days — including a privacy
+# policy naming a sub-processor that had been withdrawn.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: false
+
+jobs:
+  worker:
+    name: Deploy Worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # Deploying is not the same as being served. Assert the live host actually
+      # changed, so a silent no-op fails the run instead of looking green.
+      - name: Verify the live CN host serves this commit's content
+        run: |
+          set -euo pipefail
+          expected=$(grep -oE 'releases/download/v[0-9.]+/nestli-release-cn\.apk' downloads/index.html | head -1)
+          if [ -z "$expected" ]; then
+            echo "::error::could not read the CN APK link out of downloads/index.html"
+            exit 1
+          fi
+          echo "expecting: $expected"
+          for attempt in $(seq 1 12); do
+            live=$(curl -fsSL --max-time 20 https://cn.nestliapp.com/downloads/ \
+                   | grep -oE 'releases/download/v[0-9.]+/nestli-release-cn\.apk' | head -1 || true)
+            echo "attempt $attempt: $live"
+            [ "$live" = "$expected" ] && echo "live host matches" && exit 0
+            sleep 10
+          done
+          echo "::error::cn.nestliapp.com still serves '$live' after deploy (expected '$expected')"
+          exit 1
